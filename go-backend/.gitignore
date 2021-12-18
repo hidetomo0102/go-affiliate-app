@@ -29,6 +29,7 @@ vendor/
 vendor
 /Godeps/
 
+tmp/
 .dbdata
 settings/
 .env
