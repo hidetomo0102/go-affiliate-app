@@ -12,14 +12,10 @@ export const Login = () => {
   const submitHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    await axios.post(
-      "login",
-      {
-        email,
-        password,
-      },
-      { withCredentials: true }
-    );
+    await axios.post("login", {
+      email,
+      password,
+    });
 
     setRedirect(true);
   };
