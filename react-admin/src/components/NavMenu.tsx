@@ -1,6 +1,19 @@
-import React from "react";
+import axios from "axios";
+import { FC } from "react";
+import { Link } from "react-router-dom";
+import { UserData } from "../models/User";
 
-export const NavMenu = () => {
+interface Props {
+  user?: UserData;
+}
+
+export const NavMenu: FC<Props> = (props: Props) => {
+  const { user } = props;
+
+  const LogoutHandler = async () => {
+    await axios.post("logout");
+  };
+
   return (
     <nav
       id="sidebarMenu"
@@ -8,12 +21,16 @@ export const NavMenu = () => {
     >
       <div className="position-sticky pt-3">
         <ul className="nav flex-column">
-          <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">
-              <span data-feather="home"></span>
-              Dashboard
-            </a>
-          </li>
+          <Link to="/profile" className="p-2 text-white text-decoration-none">
+            {user?.first_name} {user?.last_name}
+          </Link>
+          <Link
+            to="/login"
+            className="p-2 text-white text-decoration-none"
+            onClick={LogoutHandler}
+          >
+            Log out
+          </Link>
         </ul>
       </div>
     </nav>
