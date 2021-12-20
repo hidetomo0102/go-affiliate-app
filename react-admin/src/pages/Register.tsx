@@ -13,7 +13,7 @@ export const Register = () => {
   const onSubmitHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:8000/api/admin/register", {
+    await axios.post("register", {
       firstName,
       lastName,
       email,
