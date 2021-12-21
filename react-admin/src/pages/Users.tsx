@@ -3,7 +3,9 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableFooter,
   TableHead,
+  TablePagination,
   TableRow,
 } from "@material-ui/core";
 import axios from "axios";
@@ -23,6 +25,7 @@ export const Users = () => {
       const { data } = await axios.get("ambassadors");
       setUsers(data);
     };
+    getAmbassadors();
   }, []);
 
   return (
@@ -58,6 +61,15 @@ export const Users = () => {
             );
           })}
         </TableBody>
+        <TableFooter>
+          <TablePagination
+            count={users.length}
+            page={page}
+            onPageChange={(e, newPage) => setPage(newPage)}
+            rowsPerPage={perPage}
+            rowsPerPageOptions={[]}
+          />
+        </TableFooter>
       </Table>
     </Layout>
   );
