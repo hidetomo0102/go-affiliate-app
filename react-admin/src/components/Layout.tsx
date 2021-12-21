@@ -36,7 +36,7 @@ export const Layout: FC<Props> = (props: Props) => {
           <Header />
           <div className="container-fluid">
             <div className="row">
-              <NavMenu user={user} />
+              <NavMenu />
               <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div className="table-responsive">{children}</div>
               </main>
