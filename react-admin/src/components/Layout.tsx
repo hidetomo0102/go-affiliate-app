@@ -8,11 +8,11 @@ import { NavMenu } from "./NavMenu";
 
 interface Props {
   children: ReactNode;
+  setUser?: React.Dispatch<UserData>;
 }
 
 export const Layout: FC<Props> = (props: Props) => {
   const [redirect, setRedirect] = useState(false);
-  const [user, setUser] = useState<UserData>();
 
   const getUser = async () => {
     try {
@@ -26,7 +26,7 @@ export const Layout: FC<Props> = (props: Props) => {
     getUser();
   }, []);
 
-  const { children } = props;
+  const { children, setUser } = props;
 
   return (
     <>
