@@ -2,7 +2,7 @@ import axios from "axios";
 import { FC, ReactChild, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
-import { UserData } from "../models/User";
+import { UserData } from "../models/user";
 import { Header } from "./Header";
 import { NavMenu } from "./NavMenu";
 

@@ -1,5 +1,4 @@
 import {
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -12,20 +11,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import { Layout } from "../components/Layout";
-import { UserData } from "../models/user";
+import { Link } from "../models/link";
 
-export const Users = () => {
-  const [users, setUsers] = useState<UserData[]>([]);
+// TODO propsの型定義やる
+export const Links = (props: any) => {
+  const [links, setLinks] = useState<Link[]>([]);
   const [page, setPage] = useState(0);
 
   const perPage = 10;
 
   useEffect(() => {
-    const getAmbassadors = async () => {
-      const { data } = await axios.get("ambassadors");
-      setUsers(data);
+    const getLinksForUser = async () => {
+      const { data } = await axios.get(`users/${props.match.params.id}/links`);
+      setLinks(data);
     };
-    getAmbassadors();
+    getLinksForUser();
   }, []);
 
   return (
@@ -40,22 +40,14 @@ export const Users = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {users.slice(page * perPage, (page + 1) * perPage).map((user) => {
+          {links.slice(page * perPage, (page + 1) * perPage).map((link) => {
             return (
-              <TableRow key={user.id}>
-                <TableCell>{user.id}</TableCell>
+              <TableRow key={link.id}>
+                <TableCell>{link.id}</TableCell>
+                <TableCell>{link.code}</TableCell>
+                <TableCell>{link.orders.length}</TableCell>
                 <TableCell>
-                  {user.first_name} {user.last_name}
-                </TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    href={`users/${user.id}/links`}
-                  >
-                    View
-                  </Button>
+                  {link.orders.reduce((s, o) => s + o.total, 0)}
                 </TableCell>
               </TableRow>
             );
@@ -63,7 +55,7 @@ export const Users = () => {
         </TableBody>
         <TableFooter>
           <TablePagination
-            count={users.length}
+            count={links.length}
             page={page}
             onPageChange={(e, newPage) => setPage(newPage)}
             rowsPerPage={perPage}
