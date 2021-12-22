@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { ToggleButtonGroup } from "@material-ui/lab";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Layout } from "../../components/Layout";
 import { Product } from "../../models/product";
 
