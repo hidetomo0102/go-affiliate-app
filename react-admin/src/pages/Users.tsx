@@ -20,11 +20,12 @@ export const Users = () => {
 
   const perPage = 10;
 
+  const getAmbassadors = async () => {
+    const { data } = await axios.get("ambassadors");
+    setUsers(data);
+  };
+
   useEffect(() => {
-    const getAmbassadors = async () => {
-      const { data } = await axios.get("ambassadors");
-      setUsers(data);
-    };
     getAmbassadors();
   }, []);
 

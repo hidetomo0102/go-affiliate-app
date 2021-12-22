@@ -20,11 +20,12 @@ export const Links = (props: any) => {
 
   const perPage = 10;
 
+  const getLinksForUser = async () => {
+    const { data } = await axios.get(`users/${props.match.params.id}/links`);
+    setLinks(data);
+  };
+
   useEffect(() => {
-    const getLinksForUser = async () => {
-      const { data } = await axios.get(`users/${props.match.params.id}/links`);
-      setLinks(data);
-    };
     getLinksForUser();
   }, []);
 

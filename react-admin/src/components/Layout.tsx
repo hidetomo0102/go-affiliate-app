@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FC, ReactChild, useEffect, useState } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 import { UserData } from "../models/user";
@@ -7,21 +7,22 @@ import { Header } from "./Header";
 import { NavMenu } from "./NavMenu";
 
 interface Props {
-  children: ReactChild;
+  children: ReactNode;
 }
 
 export const Layout: FC<Props> = (props: Props) => {
   const [redirect, setRedirect] = useState(false);
   const [user, setUser] = useState<UserData>();
 
+  const getUser = async () => {
+    try {
+      const { data } = await axios.get("user");
+    } catch (e: any) {
+      setRedirect(true);
+    }
+  };
+
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const { data } = await axios.get("user");
-      } catch (e: any) {
-        setRedirect(true);
-      }
-    };
     getUser();
   }, []);
 
