@@ -16,8 +16,8 @@ export const Register = () => {
     await axios.post("register", {
       first_name: firstName,
       last_name: lastName,
-      email,
-      password,
+      email: email,
+      password: password,
       password_config: passwordConfirm,
     });
 
