@@ -14,11 +14,11 @@ export const Register = () => {
     e.preventDefault();
 
     await axios.post("register", {
-      firstName,
-      lastName,
+      first_name: firstName,
+      last_name: lastName,
       email,
       password,
-      passwordConfirm,
+      password_config: passwordConfirm,
     });
 
     setRedirect(true);

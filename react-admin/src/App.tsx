@@ -4,10 +4,11 @@ import "./App.css";
 import { RedirectToUsers } from "./components/RedirectToUsers";
 import { Links } from "./pages/Links";
 import { Login } from "./pages/Login";
-import { Products } from "./pages/products";
-import { CreateProduct } from "./pages/products/createProduct";
+import { Products } from "./pages/products/Products";
+import { CreateProduct } from "./pages/products/CreateProduct";
 import { Register } from "./pages/Register";
 import { Users } from "./pages/Users";
+import { Orders } from "./pages/Orders";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/create" element={<CreateProduct />} />
           <Route path="/products/:id/edit" element={<CreateProduct />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </BrowserRouter>
     </div>

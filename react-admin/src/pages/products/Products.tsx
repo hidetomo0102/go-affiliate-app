@@ -29,7 +29,7 @@ export const Products = () => {
   const deleteProducts = async (id: number) => {
     if (window.confirm("Will you delete this?")) {
       await axios.delete(`products/${id}`);
-      setProducts(products.filter((p) => p.id != id));
+      setProducts(products.filter((p) => p.id !== id));
     }
   };
 
@@ -63,7 +63,7 @@ export const Products = () => {
                 <TableRow key={product.id}>
                   <TableCell>{product.id}</TableCell>
                   <TableCell>
-                    <img src={product.image} width={50} />
+                    <img src={product.image} width={50} alt={product.title} />
                   </TableCell>
                   <TableCell>{product.title}</TableCell>
                   <TableCell>{product.description}</TableCell>

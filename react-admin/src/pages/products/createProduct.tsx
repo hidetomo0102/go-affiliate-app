@@ -13,15 +13,6 @@ export const CreateProduct = () => {
 
   const { productId } = useParams<{ productId: string }>();
 
-  const getProductInfo = async () => {
-    const { data } = await axios.get(`products/${productId}`);
-
-    setTitle(data.title);
-    setDescription(data.description);
-    setImage(data.image);
-    setPrice(data.price);
-  };
-
   const submitHandler = async (e: SyntheticEvent) => {
     e.preventDefault();
 
@@ -36,10 +27,19 @@ export const CreateProduct = () => {
   };
 
   useEffect(() => {
+    const getProductInfo = async () => {
+      const { data } = await axios.get(`products/${productId}`);
+
+      setTitle(data.title);
+      setDescription(data.description);
+      setImage(data.image);
+      setPrice(data.price);
+    };
+
     if (productId) {
       getProductInfo();
     }
-  }, []);
+  }, [productId]);
 
   return (
     <>

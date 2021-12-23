@@ -22,14 +22,14 @@ export const Links = () => {
 
   const { userId } = useParams<{ userId: string }>();
 
-  const getLinksForUser = async () => {
-    const { data } = await axios.get(`users/${userId}/links`);
-    setLinks(data);
-  };
-
   useEffect(() => {
+    const getLinksForUser = async () => {
+      const { data } = await axios.get(`users/${userId}/links`);
+      setLinks(data);
+    };
+
     getLinksForUser();
-  }, []);
+  }, [userId]);
 
   return (
     <Layout>
