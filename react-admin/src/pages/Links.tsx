@@ -9,19 +9,21 @@ import {
 } from "@material-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { Layout } from "../components/Layout";
 import { Link } from "../models/link";
 
-// TODO propsの型定義やる
-export const Links = (props: any) => {
+export const Links = () => {
   const [links, setLinks] = useState<Link[]>([]);
   const [page, setPage] = useState(0);
 
   const perPage = 10;
 
+  const { userId } = useParams<{ userId: string }>();
+
   const getLinksForUser = async () => {
-    const { data } = await axios.get(`users/${props.match.params.id}/links`);
+    const { data } = await axios.get(`users/${userId}/links`);
     setLinks(data);
   };
 

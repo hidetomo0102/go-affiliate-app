@@ -21,6 +21,7 @@ export default function App() {
           <Route path="/users/:id/links" element={<Links />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/create" element={<CreateProduct />} />
+          <Route path="/products/:id/edit" element={<CreateProduct />} />
         </Routes>
       </BrowserRouter>
     </div>

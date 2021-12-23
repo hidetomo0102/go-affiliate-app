@@ -47,7 +47,7 @@ export const Products = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>#</TableCell>
+            <TableCell>id</TableCell>
             <TableCell>Image</TableCell>
             <TableCell>Title</TableCell>
             <TableCell>Description</TableCell>
