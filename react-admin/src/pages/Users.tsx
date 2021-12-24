@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import { Layout } from "../components/Layout";
+import Layout from "../components/Layout";
 import { UserData } from "../models/user";
 
 export const Users = () => {

@@ -1,7 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import axios from "axios";
 import { FC, SyntheticEvent, useEffect, useState } from "react";
-import { Layout } from "../components/Layout";
+import Layout from "../components/Layout";
 import { UserData } from "../models/user";
 
 interface Props {

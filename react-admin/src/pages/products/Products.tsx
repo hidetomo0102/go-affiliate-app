@@ -12,7 +12,7 @@ import { ToggleButtonGroup } from "@material-ui/lab";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import { Layout } from "../../components/Layout";
+import Layout from "../../components/Layout";
 import { Product } from "../../models/product";
 
 export const Products = () => {

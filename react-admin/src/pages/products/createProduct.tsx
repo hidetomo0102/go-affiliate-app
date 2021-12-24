@@ -2,7 +2,7 @@ import { Button, TextField } from "@material-ui/core";
 import axios from "axios";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { Layout } from "../../components/Layout";
+import Layout from "../../components/Layout";
 
 export const CreateProduct = () => {
   const [title, setTitle] = useState("");

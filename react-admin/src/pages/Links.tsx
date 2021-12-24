@@ -11,7 +11,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { Layout } from "../components/Layout";
+import Layout from "../components/Layout";
 import { Link } from "../models/link";
 
 export const Links = () => {

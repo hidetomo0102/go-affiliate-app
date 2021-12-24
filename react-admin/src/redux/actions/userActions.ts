@@ -4,3 +4,5 @@ export const setUser = (user: UserData) => ({
   type: "SET_USER",
   payload: user,
 });
+
+export type setUserActionType = typeof setUser;

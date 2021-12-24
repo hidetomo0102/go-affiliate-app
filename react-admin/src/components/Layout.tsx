@@ -1,22 +1,26 @@
 import axios from "axios";
 import { FC, ReactNode, useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
+import { Dispatch } from "redux";
 
 import { UserData } from "../models/user";
-import { Header } from "./Header";
+import { setUser, setUserActionType } from "../redux/actions/userActions";
+import Header from "./Header";
 import { NavMenu } from "./NavMenu";
 
 interface Props {
   children: ReactNode;
-  setUser?: React.Dispatch<UserData>;
+  setUser: setUserActionType;
 }
 
-export const Layout: FC<Props> = (props: Props) => {
+const Layout: FC<Props> = (props: Props) => {
   const [redirect, setRedirect] = useState(false);
 
   const getUser = async () => {
     try {
       const { data } = await axios.get("user");
+      setUser(data);
     } catch (e: any) {
       setRedirect(true);
     }
@@ -48,3 +52,13 @@ export const Layout: FC<Props> = (props: Props) => {
     </>
   );
 };
+
+const mapState = (state: { user: UserData }) => ({
+  user: state.user,
+});
+
+const mapDispatch = (dispatch: Dispatch) => ({
+  setUser: (user: UserData) => dispatch(setUser(user)),
+});
+
+export default connect(mapState, mapDispatch)(Layout);

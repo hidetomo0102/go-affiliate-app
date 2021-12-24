@@ -1,13 +1,13 @@
 import axios from "axios";
-import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { UserData } from "../models/user";
 
 interface Props {
-  user?: UserData;
+  user: UserData | null;
 }
 
-export const Header = (props: Props) => {
+const Header = (props: Props) => {
   const { user } = props;
 
   const LogoutHandler = async () => {
@@ -34,3 +34,7 @@ export const Header = (props: Props) => {
     </header>
   );
 };
+
+export default connect((state: { user: UserData }) => ({
+  user: state.user,
+}))(Header);
