@@ -19,7 +19,6 @@ export default function App() {
           <Route path="/" element={<RedirectToUsers />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:id/links" element={<Links />} />
           <Route path="/products" element={<Products />} />
