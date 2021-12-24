@@ -17,20 +17,19 @@ interface Props {
 const Layout: FC<Props> = (props: Props) => {
   const [redirect, setRedirect] = useState(false);
 
-  const getUser = async () => {
-    try {
-      const { data } = await axios.get("user");
-      setUser(data);
-    } catch (e: any) {
-      setRedirect(true);
-    }
-  };
+  const { children, setUser } = props;
 
   useEffect(() => {
+    const getUser = async () => {
+      try {
+        const { data } = await axios.get("user");
+        setUser(data);
+      } catch (e: any) {
+        setRedirect(true);
+      }
+    };
     getUser();
-  }, []);
-
-  const { children, setUser } = props;
+  }, [setUser]);
 
   return (
     <>

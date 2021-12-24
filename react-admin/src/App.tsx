@@ -9,7 +9,7 @@ import { CreateProduct } from "./pages/products/CreateProduct";
 import { Register } from "./pages/Register";
 import { Users } from "./pages/Users";
 import { Orders } from "./pages/Orders";
-import { Profile } from "./pages/Profile";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -19,6 +19,7 @@ export default function App() {
           <Route path="/" element={<RedirectToUsers />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:id/links" element={<Links />} />
           <Route path="/products" element={<Products />} />

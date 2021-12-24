@@ -1,15 +1,19 @@
 import { Button, TextField } from "@material-ui/core";
 import axios from "axios";
 import { FC, SyntheticEvent, useEffect, useState } from "react";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+
 import Layout from "../components/Layout";
 import { UserData } from "../models/user";
+import { setUser, setUserActionType } from "../redux/actions/userActions";
 
 interface Props {
   user: UserData;
-  setUser: React.Dispatch<UserData>;
+  setUser: setUserActionType;
 }
 
-export const Profile: FC<Props> = (props: Props) => {
+const Profile: FC<Props> = (props: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -98,3 +102,12 @@ export const Profile: FC<Props> = (props: Props) => {
     </Layout>
   );
 };
+
+export default connect(
+  (state: { user: UserData }) => ({
+    user: state.user,
+  }),
+  (dispatch: Dispatch) => ({
+    setUser: (user: UserData) => dispatch(setUser(user)),
+  })
+)(Profile);
