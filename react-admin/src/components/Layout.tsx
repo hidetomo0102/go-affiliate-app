@@ -34,7 +34,7 @@ const Layout: FC<Props> = (props: Props) => {
   return (
     <>
       {redirect ? (
-        <Navigate to="/" />
+        <Navigate to="/login" />
       ) : (
         <div>
           <Header />
