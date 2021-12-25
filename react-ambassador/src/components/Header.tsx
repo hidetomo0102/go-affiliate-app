@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { User } from "../models/user";
 
 interface Props {
-  user: User;
+  user?: User;
 }
 
 export const Header: FC<Props> = (props: Props) => {
@@ -13,7 +13,7 @@ export const Header: FC<Props> = (props: Props) => {
   const { user } = props;
 
   let buttons;
-  if (!user.id) {
+  if (!user?.id) {
     buttons = (
       <p>
         <Link to="/login" className="btn btn-primary my-2">
@@ -27,7 +27,7 @@ export const Header: FC<Props> = (props: Props) => {
   }
 
   useEffect(() => {
-    if (user.id) {
+    if (user?.id) {
       setTitle(`$${user.revenue}`);
       setDescription("Your earnings so far");
     }

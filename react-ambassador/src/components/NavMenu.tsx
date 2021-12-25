@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { User } from "../models/user";
 
 interface Props {
-  user: User;
-  setUser: any;
+  user?: User;
+  setUser?: any;
 }
 
 export const NavMenu: FC<Props> = (props: Props) => {
@@ -18,7 +18,7 @@ export const NavMenu: FC<Props> = (props: Props) => {
   };
 
   let menu;
-  if (user.id) {
+  if (user?.id) {
     menu = (
       <div className="col-md-3 text-end">
         <Link to="/rankings" className="btn me-2">
@@ -35,7 +35,7 @@ export const NavMenu: FC<Props> = (props: Props) => {
           Logout
         </a>
         <Link to="/profile" className="btn btn-primary">
-          {props.user.first_name} {props.user.last_name}
+          {user.first_name} {user.last_name}
         </Link>
       </div>
     );
