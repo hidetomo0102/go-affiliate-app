@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { User } from "../models/user";
 
 interface Props {
-  user?: User;
+  user: User | null;
 }
 
-export const Header: FC<Props> = (props: Props) => {
+const Header: FC<Props> = (props: Props) => {
   const [title, setTitle] = useState("Welcome");
   const [description, setDescription] = useState("Share links");
 
@@ -45,3 +47,7 @@ export const Header: FC<Props> = (props: Props) => {
     </section>
   );
 };
+
+export default connect((state: { user: User | null }) => ({
+  user: state.user,
+}))(Header);

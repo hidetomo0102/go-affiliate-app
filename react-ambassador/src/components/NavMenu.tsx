@@ -1,15 +1,19 @@
 import axios from "axios";
-import React, { FC } from "react";
+import { FC } from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Dispatch } from "redux";
+
 import { User } from "../models/user";
+import { setUser, setUserActionType } from "../redux/actions/userActions";
 
 interface Props {
-  user?: User;
-  setUser?: any;
+  user: User | null;
+  setUser: setUserActionType;
 }
 
-export const NavMenu: FC<Props> = (props: Props) => {
+const NavMenu: FC<Props> = (props: Props) => {
   const { user, setUser } = props;
 
   const logoutHandler = async () => {
@@ -82,3 +86,12 @@ export const NavMenu: FC<Props> = (props: Props) => {
     </div>
   );
 };
+
+export default connect(
+  (state: { user: User | null }) => ({
+    user: state.user,
+  }),
+  (dispatch: Dispatch) => ({
+    setUser: (user: User | null) => dispatch(setUser(user)),
+  })
+)(NavMenu);
