@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Product } from "../models/product";
 import { Filter } from "../models/filter";
 import axios from "axios";
+import Layout from "../components/Layout";
+import Products from "./Products";
 
 export const ProductsFrontend = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -58,5 +60,14 @@ export const ProductsFrontend = () => {
     displayProducts();
   }, [filter]);
 
-  return <div></div>;
+  return (
+    <Layout>
+      <Products
+        products={filteredProducts}
+        filter={filter}
+        setFilter={setFilter}
+        lastPage={lastPage}
+      />
+    </Layout>
+  );
 };
