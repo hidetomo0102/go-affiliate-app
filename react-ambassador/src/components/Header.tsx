@@ -33,7 +33,7 @@ const Header: FC<Props> = (props: Props) => {
       setTitle(`$${user.revenue}`);
       setDescription("Your earnings so far");
     }
-  });
+  }, [user]);
 
   return (
     <section className="py-5 text-center container">

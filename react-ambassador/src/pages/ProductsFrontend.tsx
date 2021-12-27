@@ -29,7 +29,7 @@ export const ProductsFrontend = () => {
           p.description.toLowerCase().indexOf(filter.s.toLowerCase()) >= 0
       );
 
-      if (filter.sort == "asc") {
+      if (filter.sort === "asc") {
         productsFiltered.sort((a, b) => {
           if (a.price > b.price) {
             return 1;
@@ -40,7 +40,7 @@ export const ProductsFrontend = () => {
           }
           return 0;
         });
-      } else if (filter.sort == "desc") {
+      } else if (filter.sort === "desc") {
         productsFiltered.sort((a, b) => {
           if (a.price > b.price) {
             return -1;
@@ -58,7 +58,7 @@ export const ProductsFrontend = () => {
     };
     getProductsFrontend();
     displayProducts();
-  }, [filter]);
+  }, [filter, products]);
 
   return (
     <Layout>

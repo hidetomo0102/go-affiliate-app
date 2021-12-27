@@ -155,7 +155,7 @@ const Products: FC<Props> = (props: Props) => {
                     : "card shadow-sm"
                 }
               >
-                <img src={product.image} height={200} />
+                <img src={product.image} alt={product.title} height={200} />
 
                 <div className="card-body">
                   <p className="card-text">{product.title}</p>

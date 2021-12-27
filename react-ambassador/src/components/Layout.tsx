@@ -29,7 +29,7 @@ const Layout: FC<Props> = (props: Props) => {
       }
     };
     getUser();
-  }, []);
+  }, [setUser]);
 
   let header;
   if (location.pathname === "/" || location.pathname === "/backend") {
