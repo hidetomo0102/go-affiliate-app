@@ -6,12 +6,14 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Stats } from "./pages/Stats";
 import { Rankings } from "./pages/Rankings";
+import { ProductsBackend } from "./pages/ProductsBackend";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<ProductsFrontend />} />
+        <Route path="/backend" element={<ProductsBackend />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/stats" element={<Stats />} />

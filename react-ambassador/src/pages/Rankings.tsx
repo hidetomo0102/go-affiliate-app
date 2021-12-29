@@ -10,6 +10,7 @@ export const Rankings = () => {
       const { data } = await axios.get("rankings");
       setRankings(data);
     };
+    getRankings();
   }, []);
 
   return (
