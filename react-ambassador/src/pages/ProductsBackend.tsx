@@ -33,7 +33,7 @@ export const ProductsBackend = () => {
     };
 
     filterProducts();
-  }, [filter]);
+  }, [filter, products]);
 
   return (
     <Layout>
