@@ -4,11 +4,14 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 import { Layout } from "../components/Layout";
+import { Product } from "../models/Products";
+import { Quantity } from "../models/Quantities";
+import { User } from "../models/Users";
 
 const Home = () => {
-  const [user, setUser] = useState<any>(null);
-  const [products, setProducts] = useState<any>([]);
-  const [quantities, setQuantities] = useState<any>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [quantities, setQuantities] = useState<Quantity[]>([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,7 +25,7 @@ const Home = () => {
 
   const changeQuantity = (id: number, quantity: number) => {
     setQuantities(
-      quantities.map((q: any) => {
+      quantities.map((q: Quantity) => {
         if (q.product_id === id) {
           return {
             ...q,
@@ -35,10 +38,10 @@ const Home = () => {
   };
 
   const getTotal = () => {
-    return quantities.reduce((s: any, q: any) => {
-      const product = products.find((p: any) => p.id === p.product_id);
+    return quantities.reduce((s: number, q: Quantity) => {
+      const product = products.find((p: Product) => p.id === q.product_id);
 
-      return s + product.price * q.quantity;
+      return s + product!.price * q.quantity;
     }, 0);
   };
 
@@ -78,7 +81,7 @@ const Home = () => {
       setUser(data.user);
       setProducts(data.products);
       setQuantities(
-        data.products.map((p: any) => ({
+        data.products.map((p: Product) => ({
           product_id: p.id,
           quantity: 0,
         }))
@@ -107,7 +110,7 @@ const Home = () => {
               <span className="text-primary">Products</span>
             </h4>
             <ul className="list-group mb-3">
-              {products.map((product: any) => {
+              {products.map((product: Product) => {
                 return (
                   <div key={product.id}>
                     <li className="list-group-item d-flex justify-content-between lh-sm">
